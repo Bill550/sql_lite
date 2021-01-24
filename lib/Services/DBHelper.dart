@@ -14,7 +14,7 @@ abstract class DB {
 
     try {
       var databasePath = await getDatabasesPath();
-      String _path = p.join(databasePath, 'video.db');
+      String _path = p.join(databasePath, 'names.db');
       _db = await openDatabase(_path, version: _version, onCreate: onCreate);
     } catch (e) {
       print(e);
@@ -23,7 +23,8 @@ abstract class DB {
 
   static void onCreate(Database db, int version) async {
     await db.execute(
-        'CREATE TABLE name (id INTEGER PRIMARY KEY AUTOINCREMENT, name String)');
+        'CREATE TABLE name (id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, lastname STRING)');
+        //All command will be Capital And name will be Small Letter
   }
 
   static Future<List<Map<String, dynamic>>> query(String table) async =>

@@ -28,7 +28,7 @@ class DBService {
     return names.map((e) => NameModel.fromMap(e)).toList();
   }
 
-  Future<bool> deleteVideo(NameModel model) async {
+  Future<bool> deleteName(NameModel model) async {
     await DB.init();
     bool isSaved = false;
     if (model != null) {
