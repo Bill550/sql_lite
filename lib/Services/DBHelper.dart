@@ -5,7 +5,7 @@ import 'package:sql_lite/Model/Model.dart';
 abstract class DB {
   static Database _db;
 
-  static int get _version => 1;
+  static int get _version => 2;
 
   static Future<void> init() async {
     if (_db != null) {
@@ -23,7 +23,7 @@ abstract class DB {
 
   static void onCreate(Database db, int version) async {
     await db.execute(
-        'CREATE TABLE name (id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, lastname STRING)');
+        'CREATE TABLE names(id INTEGER PRIMARY KEY AUTOINCREMENT, name STRING, lastname STRING)');
         //All command will be Capital And name will be Small Letter
   }
 

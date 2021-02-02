@@ -10,8 +10,8 @@ class NameModel extends Model {
   static NameModel fromMap(Map<String, dynamic> map) {
     return NameModel(
       id: map["id"],
-      name: map["name"].toString(),
-      lastname: map["lastname"].toString(),
+      name: map["name"],
+      lastname: map["lastname"],
     );
   }
 

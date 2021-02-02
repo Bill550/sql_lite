@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sql_lite/Model/Name.dart';
+// import 'package:sql_lite/Screens/DBData.dart';
 import 'package:sql_lite/Services/Database.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -8,8 +9,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  NameModel nameModel;
-  DBService dbService;
+  NameModel model;
+  DBService dbService = DBService();
 
   final TextEditingController lastnameController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
@@ -18,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     dbService = DBService();
-    nameModel = NameModel();
+    model = NameModel();
     // if (widget) {
 
     // }
@@ -73,16 +74,30 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 onPressed: () {
                   setState(() {
-                    nameModel.name = nameController.text;
-                    nameModel.lastname = lastnameController.text;
-                    print(nameModel.name);
-                    print(nameModel.lastname);
+                    model.name = nameController.text;
+                    model.lastname = lastnameController.text;
+                    print(model.name);
+                    print(model.lastname);
                   });
+                  dbService.addName(model);
                 },
               ),
             ),
             SizedBox(height: 30),
-            Container(),
+            Container(
+              child: MaterialButton(
+                child: Text(
+                  'DB-DATA',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/dbdata');
+                },
+              ),
+            ),
           ],
         ),
       ),

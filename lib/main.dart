@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sql_lite/Screens/DBData.dart';
 import 'package:sql_lite/Screens/HomeScreen.dart';
 
 void main() {
@@ -12,6 +13,7 @@ class SQFLite extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(),
+        '/dbdata': (context) => DBData(),
         // Navigator.pushNamed(context, '/'); to call the routes.
       },
     );
